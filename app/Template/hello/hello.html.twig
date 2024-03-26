@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ titre }}{% endblock %}
+
+{% block content %}
+<h1>{{ titre }}</h1>
+    {% if ville is not null %}
+              <div class="alert alert-success" role="alert">
+                  La ville est {{ ville }}
+               </div>
+    {% endif %}
+    {% if listeUser is not null %}
+        {{ listeUser[0] ["nom"] }}
+           {% endif %}
+       <p>Créer une nouvelle ville</p>
+       <form action="/bonjour" method="post">
+           <label for="ville">Ville</label>
+          <input type="text" id="ville" name="ville">
+          <input type="submit" value="Envoyer">
+
+      </form>
+{% endblock %}
