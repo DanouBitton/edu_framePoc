@@ -2,8 +2,20 @@ index:
     uri: /
     controller: Controller\HomeController
     httpMethod: [GET]
-
 hello:
     uri: /bonjour
     controller: Controller\HelloController
+    httpMethod: [GET, POST]
+db:
+    uri: /db
+    controller: Controller\DbController
+    httpMethod: [GET, POST]
+
+inscription:
+    uri: /inscription
+    controller: Controller\InscriptionController
+    httpMethod: [GET, POST]
+map:
+    uri: /map
+    controller: Controller\MapController
     httpMethod: [GET, POST]

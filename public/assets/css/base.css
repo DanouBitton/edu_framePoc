@@ -3,7 +3,7 @@ body {
     font-size: 16px;
     line-height: 1.6;
     color: #333;
-    background-color: #e8fff3;
+    background-color: white;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
@@ -24,3 +24,133 @@ body {
     font-weight: 300;
     line-height: 0;
 }
+
+#veliko-bicycle {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+header
+{
+    background-image: url(/public/image/img1.png);
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    width:100%;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFF;
+    padding: 10px;
+    color: #97DB75;
+}
+
+.navbar a {
+    color: lightblue;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.form-container {
+    margin: 50px auto;
+    text-align: center;
+}
+
+.form-container h2 {
+    margin-bottom: 30px;
+}
+
+.form-container input {
+    display: block;
+    margin: 10px auto;
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-container button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #97DB75;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-container p {
+    margin-top: 30px;
+    font-size: 12px;
+}
+
+.form-container a {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* Styles for img1 */
+#img1 {
+    width: 100px;
+}
+
+
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+
+nav ul a img {
+    width: 400px;
+}
+
+
+nav {
+
+    background-color: #fff;
+    padding: 20px;
+    margin-right: 250px;
+}
+
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 20px;
+    font-size: 20px;
+}
+
+
+nav a {
+    text-decoration: none;
+    color: #97DB75;
+}
+
+nav a:hover {
+    color: #97DB75;
+}
+
+.main-content {
+    background-color: #f2f2f2;
+}
+
+.main-content h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+
+

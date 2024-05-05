@@ -12,25 +12,68 @@ use Twig\Error\SyntaxError;
 
 class HelloController implements ControllerInterface
 {
+    public function execute(Request $request): string|null
+    {
+        $crud = "create";
+        //1- récupere l'objet qui se connecte a la base de données -> PDO
+        $dbConnect = DatabaseService::getConnect();
+        //traitement de mon formulaire
+//var_dump($request->get('nom'),$request->get('crud'));
+        if ($request->get('nom') != null && $request->get('crud') == 'create')
+        {
+            $dbConnect->query("INSERT INTO ville (id, nom) VALUES (null,'".$request->get('nom')."')");
 
-	public function execute(Request $request): string|null
-	{
-        $getConnect = DatabaseService::getConnect();
-        //PHP PDO Mysql
-        $statement = $getConnect->query("SELECT * FROM user");
+        }
 
 
-        $users =  $statement->fetchAll();
+        //traitement de supression
+        if($request->get('id_ville')!=null && $request->get('crud') =='delete'){
+            $statement = $dbConnect->query("Delete FROM ville WHERE ville.`id` =". $request->get('id_ville'));
+
+        }
+
+        if ($request->get('id_ville')!==null && $request->getHttpMethod() == "GET" && $request->get('crud') =='update')
+        {
+            $statement = $dbConnect->query("Select * From ville WHERE id = ".$request->get('id_ville'));
+            if ($statement !=false)
+            {
+                $ville = $statement->fetch();
+            }
+            $crud = "update";
+        }
 
 
-		return TwigCore::getEnvironment()->render('hello/hello.html.twig',
-		    [
-		        "titre"   => 'HelloController',
-		        "request" => $request,
-                "ville" => $request->get('ville'),
-                "listeUSer" => $users
+        if ($request->get('id_ville') !== null  && $request->getHttpMethod() == "POST" && $request->get('crud') =='update') {
 
-		    ]
-		);
-	}
+            $statement = $dbConnect->query("UPDATE `ville` SET ville.`nom` = '" . $request->get('nom') . "' WHERE ville.`id` = " . $request->get('id_ville'));
+        }
+
+        //Récupération des users
+        $villes = false;
+
+
+
+
+        //2- Creation de la requete SQL -> PDOStatement
+        //Phase de préparation de la validation SQL
+        $statement = $dbConnect->query("SELECT * FROM ville");
+
+        //3- Resultat de la requete SQL -> array
+        if ($statement !=false)
+        {
+            $villes = $statement->fetchAll();
+        }
+
+
+        return TwigCore::getEnvironment()->render('hello/hello.html.twig',
+            [
+                "titre"   => 'HelloController',
+                "request" => $request,
+                "listVilles" =>$villes,
+                "crud" => $crud,
+                "ville" =>$ville
+
+            ]
+        );
+    }
 }

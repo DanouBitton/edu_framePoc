@@ -7,8 +7,7 @@
   "require": {
     "php": ">=8.1",
     "ext-mbstring": "*",
-    "studoo/edu-framework": "dev-main"
-  },
+    "studoo/edu-framework": "2.0.x-dev"   },
   "autoload": {
     "psr-4": {
       "": "app/"

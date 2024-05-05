@@ -3,20 +3,26 @@
 {% block title %}{{ titre }}{% endblock %}
 
 {% block content %}
-<h1>{{ titre }}</h1>
-    {% if ville is not null %}
-              <div class="alert alert-success" role="alert">
-                  La ville est {{ ville }}
-               </div>
-    {% endif %}
-    {% if listeUser is not null %}
-        {{ listeUser[0] ["nom"] }}
-           {% endif %}
-       <p>Créer une nouvelle ville</p>
-       <form action="/bonjour" method="post">
-           <label for="ville">Ville</label>
-          <input type="text" id="ville" name="ville">
-          <input type="submit" value="Envoyer">
+    <h1>{{ titre }}</h1>
+    {% for ville in listVilles %}
+        {{ ville.id }} - {{ ville.nom }}<a href="/bonjour?id_ville={{ ville.id }}&crud=delete">supprimer</a><br>
+        <a href="/bonjour?id_ville={{ ville.id }}&crud=update">modifier</a> <br>
+    {% endfor %}
+    <p>Créer une nouvelle ville</p>
 
-      </form>
+        <form action="/bonjour" method="post">
+            <label for="ville">Ville</label>
+            <input type="hidden" value="{{ crud }}" name="crud">
+            <input type="text" name="nom" id="nom" value="{{ ville.nom }}">
+            <input type="hidden" value="{{ ville.id }}" name="id_ville">
+            <button type="submit">Envoyer</button>
+        </form>
+
 {% endblock %}
+
+{#{% if ville is not null %}
+
+
+
+              <div class="alert alert-success" role="alert">
+                  La ville est {{ ville }}#}
