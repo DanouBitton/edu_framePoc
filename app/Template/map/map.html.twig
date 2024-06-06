@@ -51,14 +51,29 @@
 
             }
 
+
+                    // Création d'un groupe de marqueurs pour regrouper les marqueurs de manière efficace
+
             {% for station in response.data.stations %}
             var latitude = {{ station.lat }};
             var longitude = {{ station.lon }};
-            var code = {{ station.code }}
-            var nom = {{ station.name }}
-            var veloManuelle = {{ station.mechanical }}
-            var veloElectrique = {{ station.ebike }}
-            var marker = L.marker([latitude, longitude, code, nom, veloManuelle, veloElectrique]).addTo(macarte);
+
+            {%for marker in response.data.station %}
+
+            var code = {{ station.code  }};
+                var nom = {{ station.name }};
+                var mecanique = {{ station.mechanical }};
+                var electrique = {{ station.ebike }};
+
+
+
+
+            {% endfor %}
+
+
+            var marker = L.marker([latitude, longitude]).addTo(macarte);
+
+
 
             {% endfor %}
 
